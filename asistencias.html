@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/asistencias.css">
+    <title>Asistencias y Presentismos</title>
+</head>
+<body>
+    <div class="menu">
+        <img class="avatar" src="img/inicio_logo.jpg" alt="logo_ficticio">
+        <h1>Asistencias y Cargas Horarias</h1>
+        
+        <form >
+
+            <label for="id_dni">ID/DNI</label>
+            <input type="text" placeholder="Ingrese DNI o ID del empleado" id="empleado_buscar">
+
+            <input type="submit" value="Verificar">
+
+            <label for="mes_trabajado">Mes</label>
+            
+            <select name="mes" id="empleado_mes">
+
+                <option value="Enero">Enero</option>
+                <option value="Febrero">Febrero</option>
+                <option value="Marzo">Marzo</option>
+                <option value="Abril">Abril</option>
+                <option value="Mayo">Mayo</option>
+                <option value="Junio">Junio</option>
+                <option value="Julio">Julio</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Septiembre">Septiembre</option>
+                <option value="Octubre">Octubre</option>
+                <option value="Noviembre">Noviembre</option>
+                <option value="Diciembre">Diciembre</option>
+
+            </select>
+
+            <label for="ausentes">Ausentes:</label>
+            <input type="text" placeholder="Ingrese ausentes" id="empleado_ausentes">
+
+            <label for="tardes">Llegadas fuera de horario:</label>
+            <input type="text" placeholder="Ingrese cantidad de tardes" id="empleado_tardes">
+
+            <label for="horas_extras">Horas Extras:</label>
+            <input type="text" placeholder="Ingrese cantidad de horas extras" id="empleado_horas_extras">
+
+            <input type="submit" name="cargar" id="cargar_asistencias" value="Cargar"> 
+
+            <a href="inicio.html">Volver al menu principal</a>
+        </form>
+
+    </div>
+
+    <script src="scripts/class_empleados.js"></script>
+
+    <script src="scripts/script_empleados.js"></script>
+
+    <script src="scripts/script_asistencias.js"></script>
+    
+</body>
+</html>

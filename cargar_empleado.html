@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cargar_empleado.css">
+    <title>Cargar empleado</title>
+</head>
+<body>
+    <div class="menu">
+        <img class="avatar" src="img/inicio_logo.jpg" alt="logo_ficticio">
+        <h1>Cargar empleado</h1>
+
+        <form action="">
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" placeholder="Ingrese nombre" id="empleado_nombre">
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" placeholder="Ingrese apellido" id="empleado_apellido">
+
+            <label for="dni">DNI:</label>
+            <input type="text" placeholder="Ingrese DNI" id="empleado_dni">
+
+            <label for="fecha_de_nacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="empleado_nacimiento">
+
+            <label for="localidad">Localidad:</label>
+            <input type="text" placeholder="Ingrese localidad" id="empleado_localidad">
+
+            <label for="calle">Calle:</label>
+            <input type="text" placeholder="Ingrese calle" id="empleado_calle">
+
+            <label for="numero_calle">N°:</label>
+            <input type="text" placeholder="N°"id="empleado_altura">
+
+            <label for="telefono">Telefono:</label>
+            <input type="text" placeholder="Ingrese telefono" id="empleado_telefono">
+
+            <label for="fecha_alta">Fecha de alta</label>
+            <input type="date" id="empleado_alta">
+            
+            <label for="puesto">Puesto:</label>
+
+            <select name="puesto" id="empleado_puesto">
+                <option value="Administrativo">Administrativo</option>
+                <option value="Vendedor">Vendedor</option>
+                <option value="Otro">Otro</option>
+            </select>
+
+            <input type="submit" value="Cargar empleado" id="empleado_cargar">
+
+            <input type="submit" value="Limpiar datos" id="formulario_reset">
+
+            <a href="inicio.html">Volver al menu principal</a>
+        </form>
+        
+    </div>
+    
+
+    <script src="scripts/class_empleados.js"></script>
+
+    <script src="scripts/script_empleados.js"></script>
+
+</body>
+</html>

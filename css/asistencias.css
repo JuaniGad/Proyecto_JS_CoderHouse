@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/inicio_fondo.jpg) no-repeat center top;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+}
+
+.menu{
+    margin-top: 2%;
+    width: 400px;
+    height: 650px;
+    background: #000;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+
+}
+
+.menu .avatar{
+width: 100px;
+height:  100px;
+border-radius: 50%;
+position: absolute;
+top: -50px;
+left: 35%;
+}
+
+.menu h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.menu label{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display:block;
+}
+
+.menu input{
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 4%;
+}
+
+.menu input[type="text"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color:#fff;
+    font-size: 16px;
+
+}
+
+.menu input[type="submit"]{
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border: none;
+    outline:none;
+    height: 40px;
+    background: cadetblue;
+    color: #000;
+    font-size: 18px;
+    border-radius: 20px;
+
+}
+
+.menu a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
