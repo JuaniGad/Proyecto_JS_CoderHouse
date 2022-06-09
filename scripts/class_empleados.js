@@ -13,8 +13,8 @@ class Empleado{
         this.puesto=puesto;
         this.sueldo=sueldo;
         this.id=id;
-        this.fecha_alta;
-        this.fecha_baja;
+        this.fecha_alta=fecha_alta;
+        this.fecha_baja=fecha_baja;
 
     }
 
@@ -32,9 +32,9 @@ class Empleado{
         return this.nombre;
     }
 
-    set set_nombre(nombre){
+    set set_nombre(nomb){
 
-        this.nombre=nombre;
+        this.nombre=nomb;
 
     }
 
@@ -43,9 +43,9 @@ class Empleado{
         return this.apellido;
     }
 
-    set set_apellido(apellido){
+    set set_apellido(apel){
         
-        this.apellido=apellido;
+        this.apellido=apel;
 
     }
 
@@ -55,9 +55,9 @@ class Empleado{
 
     }
 
-    set set_nacimiento(nacimiento){
+    set set_nacimiento(nac){
 
-        this.nacimiento=nacimiento;
+        this.nacimiento=nac;
 
     }
 
@@ -67,9 +67,9 @@ class Empleado{
 
     }
     
-    set set_localidad(localidad){
+    set set_localidad(loc){
 
-        this.localidad=localidad;
+        this.localidad=loc;
 
     }
 
@@ -79,9 +79,9 @@ class Empleado{
 
     }
 
-    set set_calle(calle){
+    set set_calle(cal){
 
-        this.calle=calle;
+        this.calle=cal;
 
     }
 
@@ -91,9 +91,9 @@ class Empleado{
 
     }
 
-    set set_altura(altura){
+    set set_altura(alt){
 
-        this.altura=altura;
+        this.altura=alt;
 
     }
 
@@ -103,9 +103,9 @@ class Empleado{
 
     }
 
-    set set_telefono(telefono){
+    set set_telefono(tel){
 
-        this.telefono=telefono;
+        this.telefono=tel;
 
     }
 
@@ -115,9 +115,9 @@ class Empleado{
 
     }
 
-    set set_puesto(puesto){
+    set set_puesto(pue){
 
-        this.puesto=puesto;
+        this.puesto=pue;
 
     }
 
@@ -127,9 +127,9 @@ class Empleado{
 
     }
 
-    set set_sueldo(sueldo){
+    set set_sueldo(suel){
 
-        this.sueldo=sueldo;
+        this.sueldo=suel;
 
     }
 
@@ -139,9 +139,9 @@ class Empleado{
 
     }
 
-    set set_id(id){
+    set set_id(_id){
 
-        this.id=id
+        this.id=_id
 
     }
 
@@ -151,9 +151,9 @@ class Empleado{
 
     }
 
-    set set_fecha_alta(fecha_alta){
+    set set_fecha_alta(fec_alt){
 
-        this.fecha_alta=fecha_alta;
+        this.fecha_alta=fec_alt;
 
     }
 
@@ -163,9 +163,9 @@ class Empleado{
 
     }
 
-    set set_fecha_baja(fecha_baja){
+    set set_fecha_baja(fec_baj){
         
-        this.fecha_baja=fecha_baja;
+        this.fecha_baja=fec_baj;
     }
 
 }

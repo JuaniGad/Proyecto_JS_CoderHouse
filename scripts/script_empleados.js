@@ -1,6 +1,19 @@
 //Aray que va a conetener los empleados cargados
 const lista_empleados=[];
 
+//Transformo el array a tipo String para poder guardarlo correctamente en el localstorage
+const lista_empleados_enJSON=JSON.stringify(lista_empleados);
+
+let verificar=JSON.parse(localStorage.getItem("lista_empleados_enJSON"));
+
+//Si no esta creada entonces la crea y la inicia, caso contrario no hace nada
+if(verificar==null){
+
+  //Almaceno en el local storage ya en formato string el array
+  localStorage.setItem("lista_empleados_enJSON",lista_empleados_enJSON);
+}
+
+
 //Variable para cargar empleado
 let cargar=document.getElementById("empleado_cargar");
 
@@ -47,27 +60,39 @@ function cargar_empleado(e){
       let fecha_alta=document.getElementById("empleado_alta").value;
 
       let sueldo=salario(puesto);
+
     //Validacion de datos
-    if(validar_dato(nombre) && validar_dato(apellido) && validar_dato(dni) && validar_dato(nacimiento) && validar_dato(localidad) && validar_dato(calle) && validar_dato(altura) && validar_dato(telefono) && validar_dato(puesto) && validar_dato(sueldo) && validar_dato(sueldo)){
+    //Primero se verifica que no este ya cargado el empleado en caso de ser asi no deja cargarlo y avisa que ya se encuentra en la nomina
+    if(existe(dni)==true){
 
-      let empleado = new Empleado(nombre,apellido,dni,nacimiento,localidad,calle,altura,telefono,puesto,sueldo,id,fecha_alta);
+      alert("El empleado ya se encuentra cargado en la nomina")
+      
+      //En caso que no se encuentre cargado se validan los datos cargados
+    } else if(validar_dato(nombre) && validar_dato(apellido) && validar_dato(dni) && validar_dato(nacimiento) && validar_dato(localidad) && validar_dato(calle) && validar_dato(altura) && validar_dato(telefono) && validar_dato(puesto) && validar_dato(sueldo) && validar_dato(sueldo)){
+           
+        let empleado = new Empleado(nombre,apellido,dni,nacimiento,localidad,calle,altura,telefono,puesto,sueldo,id,fecha_alta);
 
-      //Agrego el empleado al array
-      lista_empleados.push(empleado);
+        const lista_empleado_par=JSON.parse(localStorage.getItem("lista_empleados_enJSON"));
 
-      let mostrar=empleado.devolucion();
+        lista_empleado_par.push(empleado);
 
-      //Aviso de carga correcta
-      let confirmacion=confirm("Carga completada exitosamente "+"\n"+mostrar);
+        const lista_empleados_st=JSON.stringify(lista_empleado_par);
+
+        localStorage.setItem("lista_empleados_enJSON",lista_empleados_st);
+
+        let mostrar=empleado.devolucion();
+
+        //Aviso de carga correcta
+        let confirmacion=confirm("Carga completada exitosamente "+"\n"+"\n"+mostrar);
 
         //Ejecucion de funcion restart para limpiar las celdas completadas y permitir el ingreso de nuevos datos
-        restart(e)
+          restart(e)
+      
+      } else{
+        
+          alert("Revise los datos cargados");
 
-    }else{
-
-      alert("Revise los datos cargados");
-
-    }
+        }
   }
 
 //En funcion del puesto seleccionado se le asigna un sueldo al empleado, en caso de colocar "otro" , se ejecuta una ventana emergente para que coloque el monto.
@@ -102,8 +127,26 @@ function restart(e){
   
 }
 
+//Verifica si el empleado ya se encuentra cargado en la nomina o no. Devuelve true si se encuentra cargado
+function existe(dni_cargado){
+
+  const emple_par=JSON.parse(localStorage.getItem("lista_empleados_enJSON"));
+
+  console.log(emple_par);
+  
+  for(i=0;i<emple_par.length;i++){
+  
+    if(dni_cargado==emple_par[i].dni){
+
+      return true
+
+    }
+
+  }
+}
 //Al hacer click en el boton cargar empleado , se ejecuta la funcion cargar empleado
 cargar.addEventListener("click",cargar_empleado);
 
 //Formula para limpiar los datos de las celdas.
 reset.addEventListener("click",restart);
+

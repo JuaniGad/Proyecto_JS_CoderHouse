@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,8 +17,14 @@
             <label for="id_dni">ID/DNI</label>
             <input type="text" placeholder="Ingrese DNI o ID del empleado" id="empleado_buscar">
 
-            <input type="submit" value="Verificar">
+            <input type="submit" value="Verificar" id="empleado_verificar">
 
+            <label for="anio">Año</label>
+            <select name="anio" id="empleado_anio">
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+            </select>
+            
             <label for="mes_trabajado">Mes</label>
             
             <select name="mes" id="empleado_mes">
@@ -56,9 +62,10 @@
 
     <script src="scripts/class_empleados.js"></script>
 
+    <script src="scripts/class_asistencias.js"></script>
+
     <script src="scripts/script_empleados.js"></script>
 
     <script src="scripts/script_asistencias.js"></script>
-    
 </body>
 </html>
