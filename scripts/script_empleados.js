@@ -6,13 +6,8 @@ const lista_empleados_enJSON=JSON.stringify(lista_empleados);
 
 let verificar=JSON.parse(localStorage.getItem("lista_empleados_enJSON"));
 
-//Si no esta creada entonces la crea y la inicia, caso contrario no hace nada
-if(verificar==null){
-
-  //Almaceno en el local storage ya en formato string el array
-  localStorage.setItem("lista_empleados_enJSON",lista_empleados_enJSON);
-}
-
+//Si no esta creada entonces la crea y la inicia  //Almaceno en el local storage ya en formato string el array
+verificar == null &&  localStorage.setItem("lista_empleados_enJSON",lista_empleados_enJSON);
 
 //Variable para cargar empleado
 let cargar=document.getElementById("empleado_cargar");
@@ -65,7 +60,12 @@ function cargar_empleado(e){
     //Primero se verifica que no este ya cargado el empleado en caso de ser asi no deja cargarlo y avisa que ya se encuentra en la nomina
     if(existe(dni)==true){
 
-      alert("El empleado ya se encuentra cargado en la nomina")
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'El empleado ya se encuentra cargado en la nomina',
+
+      })
       
       //En caso que no se encuentre cargado se validan los datos cargados
     } else if(validar_dato(nombre) && validar_dato(apellido) && validar_dato(dni) && validar_dato(nacimiento) && validar_dato(localidad) && validar_dato(calle) && validar_dato(altura) && validar_dato(telefono) && validar_dato(puesto) && validar_dato(sueldo) && validar_dato(sueldo)){
@@ -90,7 +90,12 @@ function cargar_empleado(e){
       
       } else{
         
-          alert("Revise los datos cargados");
+        Swal.fire({
+          icon: 'warning',
+          title: 'Oops...',
+          text: 'Revise los datos cargados',
+  
+        })
 
         }
   }
@@ -131,8 +136,6 @@ function restart(e){
 function existe(dni_cargado){
 
   const emple_par=JSON.parse(localStorage.getItem("lista_empleados_enJSON"));
-
-  console.log(emple_par);
   
   for(i=0;i<emple_par.length;i++){
   

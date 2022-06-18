@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/asistencias.css">
-    <title>Asistencias y Presentismos</title>
+    <link rel="stylesheet" href="css/visual_sueldo_empleado.css">
+    <title>Document</title>
 </head>
 <body>
+
     <div class="menu">
         <img class="avatar" src="img/inicio_logo.jpg" alt="logo_ficticio">
         <h1>Asistencias y Cargas Horarias</h1>
         
         <form >
 
-            <label for="id_dni">ID/DNI</label>
-            <input type="text" placeholder="Ingrese DNI o ID del empleado" id="empleado_buscar">
-
-            <input type="submit" value="Verificar" id="empleado_verificar">
+            <label for="id_dni">DNI</label>
+            <input type="text" placeholder="Ingrese DNI del empleado" id="empleado_buscar">
 
             <label for="anio">Año</label>
             <select name="anio" id="empleado_anio">
@@ -44,31 +43,19 @@
 
             </select>
 
-            <label for="ausentes">Ausentes:</label>
-            <input type="text" placeholder="Ingrese ausentes" id="empleado_ausentes">
+            <input type="submit" value="Buscar" id="empleado_iniciar">
 
-            <label for="tardes">Llegadas fuera de horario:</label>
-            <input type="text" placeholder="Ingrese cantidad de tardes" id="empleado_tardes">
+            <div id="copia">
+            </div>
+            <div id="dolares">
+            </div>
+            <input type="submit" value="Dolarizar" id="sueldo_dolarizar">
 
-            <label for="horas_extras">Horas Extras:</label>
-            <input type="text" placeholder="Ingrese cantidad de horas extras" id="empleado_horas_extras">
+            <div id="conversion"></div>
 
-            <input type="submit" name="cargar" id="cargar_asistencias" value="Cargar"> 
-
-            <a href="inicio.html">Volver al menu principal</a>
+            <a href="consultas.html">Volver al menu principal</a>
         </form>
-
-    </div>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script src="scripts/class_empleados.js"></script>
-
-    <script src="scripts/class_asistencias.js"></script>
-
-    <script src="scripts/script_empleados.js"></script>
-
-    <script src="scripts/script_asistencias.js"></script>
     
+        <script src="scripts/script_visual_sueldo.js"></script>
 </body>
 </html>

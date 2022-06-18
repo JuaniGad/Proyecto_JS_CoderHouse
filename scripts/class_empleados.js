@@ -25,147 +25,147 @@ class Empleado{
         return "Nombre del empleado: "+this.nombre +"\n"+"Apellido del empleado: "+this.apellido+"\n"+"DNI: "+ this.dni+"\n"+"Fecha de nacimiento: "+this.nacimiento+"\n"+"Localidad: "+this.localidad+"\n"+"Domicilio: "+this.calle+ " N°: "+ this.altura+"\n"+"Telefono: "+this.telefono+"\n"+"Puesto: "+this.puesto+"\n"+"Sueldo: "+this.sueldo+"\n";
     }
 
-    //Metodos get y set para definir los datos de los objetos creados a partir de la clase Empleados
+  //Metodos get y set para definir los datos de los objetos creados a partir de la clase Empleados
 
-    get get_nombre(){
+  get get_nombre(){
 
-        return this.nombre;
-    }
+    return this.nombre;
+}
 
-    set set_nombre(nomb){
+set_nombre(nomb){
 
-        this.nombre=nomb;
+    this.nombre=nomb;
 
-    }
+}
 
-    get get_apellido(){
+get get_apellido(){
 
-        return this.apellido;
-    }
+    return this.apellido;
+}
 
-    set set_apellido(apel){
-        
-        this.apellido=apel;
-
-    }
-
-    get get_nacimiento(){
-
-        return this.nacimiento;
-
-    }
-
-    set set_nacimiento(nac){
-
-        this.nacimiento=nac;
-
-    }
-
-    get get_localidad(){
-
-        return this.localidad;
-
-    }
+set_apellido(apel){
     
-    set set_localidad(loc){
+    this.apellido=apel;
 
-        this.localidad=loc;
+}
 
-    }
+get get_nacimiento(){
 
-    get get_calle(){
+    return this.nacimiento;
 
-        return this.calle=calle;
+}
 
-    }
+set_nacimiento(nac){
 
-    set set_calle(cal){
+    this.nacimiento=nac;
 
-        this.calle=cal;
+}
 
-    }
+get get_localidad(){
 
-    get get_altura(){
+    return this.localidad;
 
-        return this.altura;
+}
 
-    }
+set_localidad(loc){
 
-    set set_altura(alt){
+    this.localidad=loc;
 
-        this.altura=alt;
+}
 
-    }
+get get_calle(){
 
-    get get_telefono(){
+    return this.calle=calle;
 
-        return this.telefono;
+}
 
-    }
+set_calle(cal){
 
-    set set_telefono(tel){
+    this.calle=cal;
 
-        this.telefono=tel;
+}
 
-    }
+get get_altura(){
 
-    get get_puesto(){
+    return this.altura;
 
-        return this.puesto;
+}
 
-    }
+set_altura(alt){
 
-    set set_puesto(pue){
+    this.altura=alt;
 
-        this.puesto=pue;
+}
 
-    }
+get get_telefono(){
 
-    get get_sueldo(){
+    return this.telefono;
 
-        return this.sueldo;
+}
 
-    }
+set_telefono(tel){
 
-    set set_sueldo(suel){
+    this.telefono=tel;
 
-        this.sueldo=suel;
+}
 
-    }
+get get_puesto(){
 
-    get get_id(){
+    return this.puesto;
 
-        return this.id;
+}
 
-    }
+set_puesto(pue){
 
-    set set_id(_id){
+    this.puesto=pue;
 
-        this.id=_id
+}
 
-    }
+get get_sueldo(){
 
-    get get_fecha_alta(){
-        
-        return this.fecha_alta;
+    return this.sueldo;
 
-    }
+}
 
-    set set_fecha_alta(fec_alt){
+set_sueldo(suel){
 
-        this.fecha_alta=fec_alt;
+    this.sueldo=suel;
 
-    }
+}
 
-    get get_fecha_baja(){
+get get_id(){
 
-        return fecha_baja;
+    return this.id;
 
-    }
+}
 
-    set set_fecha_baja(fec_baj){
-        
-        this.fecha_baja=fec_baj;
-    }
+set_id(_id){
+
+    this.id=_id
+
+}
+
+get get_fecha_alta(){
+    
+    return this.fecha_alta;
+
+}
+
+set_fecha_alta(fec_alt){
+
+    this.fecha_alta=fec_alt;
+
+}
+
+get get_fecha_baja(){
+
+    return fecha_baja;
+
+}
+
+set_fecha_baja(fec_baj){
+    
+    this.fecha_baja=fec_baj;
+}
 
 }

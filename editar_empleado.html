@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/editar_empleado.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="menu">
+        <img class="avatar" src="img/inicio_logo.jpg" alt="logo_ficticio">
+        <h1>Asistencias y Cargas Horarias</h1>
+        
+        <form >
+
+            <label for="id_dni">ID/DNI</label>
+            <input type="text" placeholder="Ingrese DNI o ID del empleado" id="empleado_editar">
+
+            <input type="submit" value="Verificar" id="empleado_verificar">
+
+            <label for="edits">Seleccione la propiedad a editar</label>
+
+            <select name="puesto" id="empleado_ediciones">
+                <option value="Nombre">Nombre</option>
+                <option value="Apellido">Apellido</option>
+                <option value="DNI">DNI</option>
+                <option value="Localidad">Localidad</option>
+                <option value="Calle">Calle</option>
+                <option value="Altura">Altura</option>
+                <option value="Telefono">Telefono</option>
+                <option value="Puesto">Puesto</option>
+                <option value="Sueldo">Sueldo</option>
+            </select>
+
+            <input type="text" placeholder="Ingrese el nuevo valor de la propiedad" id="empleado_cambio">
+
+            <input type="submit" value="Guardar Cambios" id="empleado_guardar_cambios">
+
+
+            <a href="consultas.html">Volver al menu principal</a>
+        </form>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="scripts/class_empleado_prueba.js"></script>
+
+    <script src="scripts/class_empleados.js"></script>
+
+
+    <script src="scripts/script_editar_empleado.js"></script>
+</body>
+</html>

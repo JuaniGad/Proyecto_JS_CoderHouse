@@ -1,6 +1,10 @@
 //Array de los meses donde se cargaran los nuevos objetos creado de ASISTENCIAS
 
 //2022
+const enero_22=[];
+const febrero_22=[];
+const marzo_22=[];
+const abril_22=[];
 const mayo_22=[];
 const junio_22=[];
 const julio_22=[];
@@ -48,15 +52,8 @@ function verificador(e){
     let busqueda_dni=list_empl_par.some((empleado)=>empleado.dni===id_dni);
 
     //Si encuentra el empleado entonces avisa que puede continuar sino se solicita cargarlo.
-    if(busqueda_id || busqueda_dni){
+    busqueda_dni || busqueda_id ? Swal.fire("El empleado se encuentra registrado, puede continuar") : Swal.fire("El empleado no se encuentra cargado en la nomina, primero debe cargarlo en la nomina") ;
 
-        alert("El empleado se encuentra registrado, puede continuar");
-        
-
-    }else{
-
-        alert("El empleado no se encuentra cargado en la nomina, primero debe cargarlo en la nomina")
-    }
 
 }
 
@@ -107,9 +104,9 @@ function cargar_completar_datos(e){
 
         if(validar_todo(cargar_tarde) && validar_todo(cargar_horas_extras) && validar_todo(cargar_ausentes)){
 
-            alert("Los datos son correctos, y cumplen su formato")
+            Swal.fire("Los datos son correctos, y cumplen su formato")
 
-            let sueldo_final=sueldo_efimero+emple_presentismo+((sueldo_efimero/30/8)*cargar_horas_extras);
+            let sueldo_final=parseInt(sueldo_efimero)+parseInt(emple_presentismo)+((parseInt(sueldo_efimero)/30/8)*parseInt(cargar_horas_extras).toFixed(2));
            
             //Creo un objeto y completo sus datos con los valores ingresados
             let empleado_asistencia=new Asistencias(id_efimero,dni_efimero,sueldo_efimero,cargar_anio,cargar_mes,cargar_ausentes,cargar_tarde,cargar_horas_extras,emple_presentismo,sueldo_final);
@@ -130,13 +127,13 @@ function cargar_completar_datos(e){
 
         }else{
 
-            alert("Revise los datos cargados y su formato.")
+            Swal.fire("Revise los datos cargados y su formato.")
 
         }                 
 
     }else{
         
-        alert("El empleado que quiere actualizar no se encuentra en la nomina , primero debe cargarlo")
+        Swal.fire("El empleado que quiere actualizar no se encuentra en la nomina , primero debe cargarlo")
 
     }
 }
@@ -178,316 +175,381 @@ function busqueda_id_dni(a,b,c){
 //Carga el empleado en el mes correspondiente segun el anio
 function listado_mes_2022(mes){
     
-    switch (mes){
-        case "Mayo":
-            //Verifico el Local Storage para ver si ya hay datos almacenados, si los hay lo parseo
-            const may_2022_par=JSON.parse(localStorage.getItem("may_2022_enJSON"));
+    switch (mes) {
+      case "Enero":
+        //Verifico el Local Storage para ver si ya hay datos almacenados, si los hay lo parseo
+        const ene_2022_par = JSON.parse(
+          localStorage.getItem("ene_2022_enJSON")
+        );
 
-            //Si no hay datos almacenados entonces cargo el objeto y lo pushe en un array par aluego transformar todo en String y almacenarlo en el Local Storage con la clave correspondiente
-            if(may_2022_par==null){
+        //Si no hay datos almacenados entonces cargo el objeto y lo pushe en un array par aluego transforene todo en String y almacenarlo en el Local Storage con la clave correspondiente
+        if (ene_2022_par == null) {
+          enero_22.push(array_objeto[0]);
 
-                mayo_22.push(array_objeto[0]);
+          const enero_22_st = JSON.stringify(enero_22);
 
-                const mayo_22_st=JSON.stringify(mayo_22);
+          localStorage.setItem("ene_2022_enJSON", enero_22_st);
 
-                localStorage.setItem("may_2022_enJSON",mayo_22_st);
+          Swal.fire("Carga exitosa");
 
-                alert("Carga exitosa")
+          //Si ya hay datos en el local storage, primero verifico que el empleado no se encuentre ya cargado, de ser asi doy aviso que ya se encuentra cargado caso contrario pusheo en el array de objetos parseado al inicio y luego lo transformo en String para almacenarlo en el Local Storage nuevamente con la misma clave.
+        } else {
+          for (i = 0; i < ene_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+            if (dni_a_buscar == ene_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              ene_2022_par.push(array_objeto[0]);
 
-            //Si ya hay datos en el local storage, primero verifico que el empleado no se encuentre ya cargado, de ser asi doy aviso que ya se encuentra cargado caso contrario pusheo en el array de objetos parseado al inicio y luego lo transformo en String para almacenarlo en el Local Storage nuevamente con la misma clave.
-            }else {
+              const ene_2022_st = JSON.stringify(ene_2022_par);
 
-                for(i=0;i<may_2022_par.length;i++){
-
-                let dni_a_buscar=document.getElementById("empleado_buscar").value;
-                    if(dni_a_buscar==may_2022_par[i].dni){
-
-                        alert("El empleado ya se encuentra cargado en el mes")
-                    
-                    }else{
-
-                        may_2022_par.push(array_objeto[0]);
-                        
-                        const may_2022_st=JSON.stringify(may_2022_par);
-        
-                        localStorage.setItem("may_2022_enJSON",may_2022_st);
-        
-                    }  
-
-                }
+              localStorage.setItem("ene_2022_enJSON", ene_2022_st);
             }
+          }
+        }
 
         break;
 
-        case "Junio":
+      case "Febrero":
+        const feb_2022_par = JSON.parse(
+          localStorage.getItem("feb_2022_enJSON")
+        );
 
-                const jun_2022_par=JSON.parse(localStorage.getItem("jun_2022_enJSON"));
+        if (feb_2022_par == null) {
+          febrero_22.push(array_objeto[0]);
 
-                if(jun_2022_par==null){
+          const febrero_22_st = JSON.stringify(febrero_22);
 
-                    junio_22.push(array_objeto[0]);
+          localStorage.setItem("feb_2022_enJSON", febrero_22_st);
 
-                    const jun_22_st=JSON.stringify(junio_22);
+          Swal.fire("Carga exitosa");
 
-                    localStorage.setItem("jun_2022_enJSON",jun_22_st);
+        } else {
+          for (i = 0; i < feb_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+            if (dni_a_buscar == feb_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              feb_2022_par.push(array_objeto[0]);
 
-                    
-                    alert("Carga exitosa")
+              const feb_2022_st = JSON.stringify(feb_2022_par);
 
-
-            }else{
-
-                for(i=0;i<jun_2022_par.length;i++){
-
-                let dni_a_buscar=document.getElementById("empleado_buscar").value;
-
-                    if(dni_a_buscar==jun_2022_par[i].dni){
-
-                        alert("El empleado ya se encuentra cargado en el mes")
-                            
-                    }else{
-
-                     jun_2022_par.push(array_objeto[0]);
-                    
-                     const jun_2022_st=JSON.stringify(jun_2022_par);
-
-                     localStorage.setItem("jun_2022_enJSON",jun_2022_st);
-
-                    
-                     alert("Carga exitosa")
-
-
-                    }
-                }
+              localStorage.setItem("feb_2022_enJSON", feb_2022_st);
             }
-        
-        break;
-
-        case "Julio":
-
-
-            const jul_2022_par=JSON.parse(localStorage.getItem("jul_2022_enJSON"));
-
-            if(jul_2022_par==null){
-
-                julio_22.push(array_objeto[0]);
-
-                const jul_22_st=JSON.stringify(julio_22);
-
-                localStorage.setItem("jul_2022_enJSON",jul_22_st);
-
-                alert("Carga exitosa")
-
-            }else{
-                for(i=0;i<jul_2022_par.length;i++){
-
-                    let dni_a_buscar=document.getElementById("empleado_buscar").value;
-
-                    if(dni_a_buscar==jul_2022_par[i].dni){
-
-                        alert("El empleado ya se encuentra cargado en el mes")
-                            
-                    }else{
-
-                        jul_2022_par.push(array_objeto[0]);
-                        
-                        const jul_2022_st=JSON.stringify(jul_2022_par);
-
-                        localStorage.setItem("jul_2022_enJSON",jul_2022_st);
-
-                    }    
-                }  
-            }  
+          }
+        }
 
         break;
 
-        case "Agosto":
+      case "Marzo":
+        const mar_2022_par = JSON.parse(
+          localStorage.getItem("mar_2022_enJSON")
+        );
 
+        if (mar_2022_par == null) {
+          marzo_22.push(array_objeto[0]);
 
-            const ago_2022_par=JSON.parse(localStorage.getItem("ago_2022_enJSON"));
+          const marzo_22_st = JSON.stringify(marzo_22);
 
-            if(ago_2022_par==null){
+          localStorage.setItem("mar_2022_enJSON", marzo_22_st);
 
-                agosto_22.push(array_objeto[0]);
+          Swal.fire("Carga exitosa");
 
-                const ago_22_st=JSON.stringify(agosto_22);
+        } else {
+          for (i = 0; i < mar_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+            if (dni_a_buscar == mar_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              mar_2022_par.push(array_objeto[0]);
 
-                localStorage.setItem("ago_2022_enJSON",ago_22_st);
+              const mar_2022_st = JSON.stringify(mar_2022_par);
 
-                alert("Carga exitosa")
-
-            }else{
-
-                for(i=0;i<ago_2022_par.length;i++){
-
-                    let dni_a_buscar=document.getElementById("empleado_buscar").value;
-
-                    if(dni_a_buscar==ago_2022_par[i].dni){
-
-                        alert("El empleado ya se encuentra cargado en el mes")
-                                
-                    }else{
-                                
-                        ago_2022_par.push(array_objeto[0]);
-                            
-                        const ago_2022_st=JSON.stringify(ago_2022_par);
-
-                        localStorage.setItem("ago_2022_enJSON",ago_2022_st);
-
-                    }
-                }
+              localStorage.setItem("mar_2022_enJSON", mar_2022_st);
             }
+          }
+        }
+
         break;
 
-        case "Septiembre":
+      case "Abril":
+        const abr_2022_par = JSON.parse(
+          localStorage.getItem("abr_2022_enJSON")
+        );
 
-            const sep_2022_par=JSON.parse(localStorage.getItem("sep_2022_enJSON"));
+        if (abr_2022_par == null) {
+          abril_22.push(array_objeto[0]);
 
-            if(sep_2022_par==null){
+          const abril_22_st = JSON.stringify(abril_22);
 
-                septiembre_22.push(array_objeto[0]);
+          localStorage.setItem("abr_2022_enJSON", abril_22_st);
 
-                const sep_22_st=JSON.stringify(septiembre_22);
+          Swal.fire("Carga exitosa");
 
-                localStorage.setItem("sep_2022_enJSON",sep_22_st);
+        } else {
+          for (i = 0; i < abr_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+            if (dni_a_buscar == abr_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              abr_2022_par.push(array_objeto[0]);
 
-                alert("Carga exitosa")
+              const abr_2022_st = JSON.stringify(abr_2022_par);
 
-            }else{
+              localStorage.setItem("abr_2022_enJSON", abr_2022_st);
+            }
+          }
+        }
 
-                for(i=0;i<sep_2022_par.length;i++){
-
-                    let dni_a_buscar=document.getElementById("empleado_buscar").value;
-
-                    if(dni_a_buscar==sep_2022_par[i].dni){
-
-                        alert("El empleado ya se encuentra cargado en el mes")
-                                
-                    }else{
-
-                        sep_2022_par.push(array_objeto[0]);
-                        
-                        const sep_2022_st=JSON.stringify(sep_2022_par);
-
-                        localStorage.setItem("sep_2022_enJSON",sep_2022_st);
-
-                    }  
-                }
-            }        
         break;
 
-        case "Octubre":
+      case "Mayo":
+        const may_2022_par = JSON.parse(
+          localStorage.getItem("may_2022_enJSON")
+        );
 
-            const oct_2022_par=JSON.parse(localStorage.getItem("oct_2022_enJSON"));
+        if (may_2022_par == null) {
+          mayo_22.push(array_objeto[0]);
 
-            if(oct_2022_par==null){
+          const mayo_22_st = JSON.stringify(mayo_22);
 
-                octubre_22.push(array_objeto[0]);
+          localStorage.setItem("may_2022_enJSON", mayo_22_st);
 
-                const oct_22_st=JSON.stringify(octubre_22);
+          Swal.fire("Carga exitosa");
 
-                localStorage.setItem("oct_2022_enJSON",oct_22_st);
+        } else {
+          for (i = 0; i < may_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+            if (dni_a_buscar == may_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              may_2022_par.push(array_objeto[0]);
 
-                alert("Carga exitosa")
+              const may_2022_st = JSON.stringify(may_2022_par);
 
-            }else{
+              localStorage.setItem("may_2022_enJSON", may_2022_st);
+            }
+          }
+        }
 
-                for(i=0;i<oct_2022_par.length;i++){
-
-                    let dni_a_buscar=document.getElementById("empleado_buscar").value;
-
-                    if(dni_a_buscar==oct_2022_par[i].dni){
-
-                        alert("El empleado ya se encuentra cargado en el mes")
-                                
-                    }else{
-
-                        oct_2022_par.push(array_objeto[0]);
-                        
-                        const oct_2022_st=JSON.stringify(oct_2022_par);
-
-                        localStorage.setItem("oct_2022_enJSON",oct_2022_st);
-
-                    }  
-                }
-            }             
         break;
 
-        case "Noviembre":
+      case "Junio":
+        const jun_2022_par = JSON.parse(
+          localStorage.getItem("jun_2022_enJSON")
+        );
 
-            const nov_2022_par=JSON.parse(localStorage.getItem("nov_2022_enJSON"));
+        if (jun_2022_par == null) {
+          junio_22.push(array_objeto[0]);
 
-            if(nov_2022_par==null){
+          const jun_22_st = JSON.stringify(junio_22);
 
-                noviembre_22.push(array_objeto[0]);
+          localStorage.setItem("jun_2022_enJSON", jun_22_st);
 
-                const nov_22_st=JSON.stringify(noviembre_22);
+          Swal.fire("Carga exitosa");
+        } else {
+          for (i = 0; i < jun_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
 
-                localStorage.setItem("nov_2022_enJSON",nov_22_st);
+            if (dni_a_buscar == jun_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              jun_2022_par.push(array_objeto[0]);
 
-                alert("Carga exitosa")
+              const jun_2022_st = JSON.stringify(jun_2022_par);
 
-            }else{
+              localStorage.setItem("jun_2022_enJSON", jun_2022_st);
 
-                for(i=0;i<nov_2022_par.length;i++){
+              Swal.fire("Carga exitosa");
+            }
+          }
+        }
 
-                    let dni_a_buscar=document.getElementById("empleado_buscar").value;
-
-                    if(dni_a_buscar==nov_2022_par[i].dni){
-
-                        alert("El empleado ya se encuentra cargado en el mes")
-                                
-                    }else{
-
-                        nov_2022_par.push(array_objeto[0]);
-                        
-                        const nov_2022_st=JSON.stringify(nov_2022_par);
-
-                        localStorage.setItem("nov_2022_enJSON",nov_2022_st);
-
-                    }  
-                }
-            }             
         break;
 
-        case "Diciembre":
+      case "Julio":
+        const jul_2022_par = JSON.parse(
+          localStorage.getItem("jul_2022_enJSON")
+        );
 
-            const dic_2022_par=JSON.parse(localStorage.getItem("dic_2022_enJSON"));
+        if (jul_2022_par == null) {
+          julio_22.push(array_objeto[0]);
 
-            if(dic_2022_par==null){
+          const jul_22_st = JSON.stringify(julio_22);
 
-                diciembre_22.push(array_objeto[0]);
+          localStorage.setItem("jul_2022_enJSON", jul_22_st);
 
-                const dic_22_st=JSON.stringify(diciembre_22);
+          Swal.fire("Carga exitosa");
+        } else {
+          for (i = 0; i < jul_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
 
-                localStorage.setItem("dic_2022_enJSON",dic_22_st);
+            if (dni_a_buscar == jul_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              jul_2022_par.push(array_objeto[0]);
 
-                alert("Carga exitosa")
+              const jul_2022_st = JSON.stringify(jul_2022_par);
 
-            }else{
+              localStorage.setItem("jul_2022_enJSON", jul_2022_st);
+            }
+          }
+        }
 
-                for(i=0;i<dic_2022_par.length;i++){
-
-                    let dni_a_buscar=document.getElementById("empleado_buscar").value;
-
-                    if(dni_a_buscar==dic_2022_par[i].dni){
-
-                        alert("El empleado ya se encuentra cargado en el mes")
-                                
-                    }else{
-
-                        dic_2022_par.push(array_objeto[0]);
-                        
-                        const dic_2022_st=JSON.stringify(dic_2022_par);
-
-                        localStorage.setItem("dic_2022_enJSON",dic_2022_st);
-
-                    }  
-                }
-            }        
         break;
 
-        default: alert("El mes no esta en curso");
+      case "Agosto":
+        const ago_2022_par = JSON.parse(
+          localStorage.getItem("ago_2022_enJSON")
+        );
+
+        if (ago_2022_par == null) {
+          agosto_22.push(array_objeto[0]);
+
+          const ago_22_st = JSON.stringify(agosto_22);
+
+          localStorage.setItem("ago_2022_enJSON", ago_22_st);
+
+          Swal.fire("Carga exitosa");
+        } else {
+          for (i = 0; i < ago_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+
+            if (dni_a_buscar == ago_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              ago_2022_par.push(array_objeto[0]);
+
+              const ago_2022_st = JSON.stringify(ago_2022_par);
+
+              localStorage.setItem("ago_2022_enJSON", ago_2022_st);
+            }
+          }
+        }
+        break;
+
+      case "Septiembre":
+        const sep_2022_par = JSON.parse(
+          localStorage.getItem("sep_2022_enJSON")
+        );
+
+        if (sep_2022_par == null) {
+          septiembre_22.push(array_objeto[0]);
+
+          const sep_22_st = JSON.stringify(septiembre_22);
+
+          localStorage.setItem("sep_2022_enJSON", sep_22_st);
+
+          Swal.fire("Carga exitosa");
+        } else {
+          for (i = 0; i < sep_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+
+            if (dni_a_buscar == sep_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              sep_2022_par.push(array_objeto[0]);
+
+              const sep_2022_st = JSON.stringify(sep_2022_par);
+
+              localStorage.setItem("sep_2022_enJSON", sep_2022_st);
+            }
+          }
+        }
+        break;
+
+      case "Octubre":
+        const oct_2022_par = JSON.parse(
+          localStorage.getItem("oct_2022_enJSON")
+        );
+
+        if (oct_2022_par == null) {
+          octubre_22.push(array_objeto[0]);
+
+          const oct_22_st = JSON.stringify(octubre_22);
+
+          localStorage.setItem("oct_2022_enJSON", oct_22_st);
+
+          Swal.fire("Carga exitosa");
+        } else {
+          for (i = 0; i < oct_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+
+            if (dni_a_buscar == oct_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              oct_2022_par.push(array_objeto[0]);
+
+              const oct_2022_st = JSON.stringify(oct_2022_par);
+
+              localStorage.setItem("oct_2022_enJSON", oct_2022_st);
+            }
+          }
+        }
+        break;
+
+      case "Noviembre":
+        const nov_2022_par = JSON.parse(
+          localStorage.getItem("nov_2022_enJSON")
+        );
+
+        if (nov_2022_par == null) {
+          noviembre_22.push(array_objeto[0]);
+
+          const nov_22_st = JSON.stringify(noviembre_22);
+
+          localStorage.setItem("nov_2022_enJSON", nov_22_st);
+
+          Swal.fire("Carga exitosa");
+        } else {
+          for (i = 0; i < nov_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+
+            if (dni_a_buscar == nov_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              nov_2022_par.push(array_objeto[0]);
+
+              const nov_2022_st = JSON.stringify(nov_2022_par);
+
+              localStorage.setItem("nov_2022_enJSON", nov_2022_st);
+            }
+          }
+        }
+        break;
+
+      case "Diciembre":
+        const dic_2022_par = JSON.parse(
+          localStorage.getItem("dic_2022_enJSON")
+        );
+
+        if (dic_2022_par == null) {
+          diciembre_22.push(array_objeto[0]);
+
+          const dic_22_st = JSON.stringify(diciembre_22);
+
+          localStorage.setItem("dic_2022_enJSON", dic_22_st);
+
+          Swal.fire("Carga exitosa");
+        } else {
+          for (i = 0; i < dic_2022_par.length; i++) {
+            let dni_a_buscar = document.getElementById("empleado_buscar").value;
+
+            if (dni_a_buscar == dic_2022_par[i].dni) {
+              Swal.fire("El empleado ya se encuentra cargado en el mes");
+            } else {
+              dic_2022_par.push(array_objeto[0]);
+
+              const dic_2022_st = JSON.stringify(dic_2022_par);
+
+              localStorage.setItem("dic_2022_enJSON", dic_2022_st);
+            }
+          }
+        }
+        break;
+
+      default:
+        Swal.fire("El mes no esta en curso");
     }
     
     
@@ -511,7 +573,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("ene_2023_enJSON",ene_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -521,7 +583,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==ene_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
 
@@ -548,7 +610,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("feb_2023_enJSON",feb_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -558,7 +620,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==feb_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
 
@@ -585,7 +647,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("mar_2023_enJSON",mar_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -595,7 +657,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==mar_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
 
@@ -622,7 +684,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("abr_2023_enJSON",abr_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -632,7 +694,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==abr_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
 
@@ -659,7 +721,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("may_2023_enJSON",mayo_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else {
 
@@ -668,7 +730,7 @@ function listado_mes_2023(mes){
                 let dni_a_buscar=document.getElementById("empleado_buscar").value;
                     if(dni_a_buscar==may_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                     
                     }else{
 
@@ -698,7 +760,7 @@ function listado_mes_2023(mes){
                     localStorage.setItem("jun_2023_enJSON",jun_23_st);
 
                     
-                    alert("Carga exitosa")
+                    Swal.fire("Carga exitosa")
 
 
             }else{
@@ -709,7 +771,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==jun_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                             
                     }else{
 
@@ -720,7 +782,7 @@ function listado_mes_2023(mes){
                      localStorage.setItem("jun_2023_enJSON",jun_2023_st);
 
                     
-                     alert("Carga exitosa")
+                     Swal.fire("Carga exitosa")
 
 
                     }
@@ -742,7 +804,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("jul_2023_enJSON",jul_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
                 for(i=0;i<jul_2023_par.length;i++){
@@ -751,7 +813,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==jul_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                             
                     }else{
 
@@ -780,7 +842,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("ago_2023_enJSON",ago_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -790,7 +852,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==ago_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
                                 
@@ -817,7 +879,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("sep_2023_enJSON",sep_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -827,7 +889,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==sep_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
 
@@ -854,7 +916,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("oct_2023_enJSON",oct_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -864,7 +926,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==oct_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
 
@@ -891,7 +953,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("nov_2023_enJSON",nov_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -901,7 +963,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==nov_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
 
@@ -928,7 +990,7 @@ function listado_mes_2023(mes){
 
                 localStorage.setItem("dic_2023_enJSON",dic_23_st);
 
-                alert("Carga exitosa")
+                Swal.fire("Carga exitosa")
 
             }else{
 
@@ -938,7 +1000,7 @@ function listado_mes_2023(mes){
 
                     if(dni_a_buscar==dic_2023_par[i].dni){
 
-                        alert("El empleado ya se encuentra cargado en el mes")
+                        Swal.fire("El empleado ya se encuentra cargado en el mes")
                                 
                     }else{
 

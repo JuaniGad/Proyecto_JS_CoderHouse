@@ -3,7 +3,8 @@ const lista_parse=JSON.parse(localStorage.getItem("lista_empleados_enJSON"));
 
 if(lista_parse==null){
 
-    alert("No hay empleados cargados en la nomina")
+    Swal.fire("No hay empleados cargados en la nomina");
+    
 }else{
 
     for (const emples of lista_parse){
