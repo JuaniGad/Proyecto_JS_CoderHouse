@@ -158,10 +158,12 @@ function busqueda_id_dni(a,b,c){
     })
 
     }else if(b){
+      
+      const list_empl_pars_ef=JSON.parse(localStorage.getItem("lista_empleados_enJSON"))
 
-        const lista_previa=list_empl_pars_ef.filter((empleado)=>empleado.id.includes(c));
+        const lista_previa_2=list_empl_pars_ef.filter((empleado)=>empleado.id.includes(c));
     
-        lista_efimera=lista_previa.map(elemento=>{
+        lista_efimera=lista_previa_2.map(elemento=>{
     
             return  {
                 id:elemento.id,

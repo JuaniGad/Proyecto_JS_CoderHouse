@@ -45,6 +45,12 @@ function editar(e){
 
     let nuevo_valor=document.getElementById("empleado_cambio").value;
 
+    if(posicion==null){
+
+        Swal.fire("Coloque un dni o id correcto que se encuentre cargado en la nomina")
+
+    }else{
+
     validar_dato(nuevo_valor);
 
     if(validar_dato(nuevo_valor)){
@@ -125,6 +131,7 @@ function editar(e){
                 Swal.fire("Sueldo modificado exitosamente");
 
             break;
+            
 
         }
 
@@ -136,6 +143,7 @@ function editar(e){
         Swal.fire("Debe ingresar un nuevo valor para poder editar correctamente");
 
     }
+}
 
 
 }

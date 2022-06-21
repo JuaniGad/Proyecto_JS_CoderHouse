@@ -1,7 +1,7 @@
-//Usuario y contraseñas preestablecidos
+//Usuario y contrasenia preestablecidos
 let user_1 = new User("Pedro15", "123456");
 
-//Arrays para guardar los usuarios y contraseñas
+//Arrays para guardar los usuarios y contrasenia
 const lista_users = [];
 
 //Pusheo en primer instancia los preestablecidos
@@ -28,7 +28,7 @@ let cambiar = document.getElementById("restart");
 //Funcion Restablecer(Permite cambiar el usuario y la contrasenia para logearse a la pagina)
 function restablecer() {
   Swal.fire({
-    title: "Está seguro desea añadir un nuevo usuario y contraseña?",
+    title: "Está seguro desea aniadir un nuevo usuario y contrasenia?",
     icon: "warning",
     showCancelButton: true,
     confirmButtonText: "Sí, seguro",
@@ -87,8 +87,8 @@ function restablecer() {
             //Almaceno en el Local Storage con la misma clave
             localStorage.setItem("lista_users_enJSON", lista_user_st);
 
-            //Alerta de creacion correcta de usuario y contraseña
-            Swal.fire("Nuevo usuario y contraseña creados");
+            //Alerta de creacion correcta de usuario y contrasenia
+            Swal.fire("Nuevo usuario y contrasenia creados");
             
           } else {
 
